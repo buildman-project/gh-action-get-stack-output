@@ -7,7 +7,7 @@ inputs:
   StackName:
     required: true
     description: name of the stack
-  Outpus:
+  Outputs:
     required: true
     description: separated comma string with the desired outputs' names
 
