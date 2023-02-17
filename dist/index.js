@@ -2834,8 +2834,6 @@ const outputNames = outputsString.split(",").map(function (str) {
   return str.trim();
 });
 
-core.setOutput("TestOutput", "TestValue");
-
 const getOutputScript = function (desiredOutput) {
   return `aws cloudformation describe-stacks  --query "Stacks[?StackName=='${stackName}'][].Outputs[?OutputKey=='${desiredOutput}'].OutputValue" --output text`;
 };
@@ -2852,6 +2850,7 @@ const getOutput = function (outputName) {
 };
 
 async function main() {
+  core.setOutput("TestOutput", "TestValue");
   for (const desiredOutput of outputNames) {
     console.log("output:", desiredOutput);
     const result = await getOutput(desiredOutput);
