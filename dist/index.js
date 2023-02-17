@@ -2834,6 +2834,13 @@ const outputNames = outputsString.split(",").map(function (str) {
   return str.trim();
 });
 
+const camelToSnakeCase = (str) => {
+  const tranformed = str
+    .replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
+    .toUpperCase();
+  return tranformed.startsWith("_") ? tranformed : tranformed.slice(1);
+};
+
 const getOutputScript = function (desiredOutput) {
   return `aws cloudformation describe-stacks  --query "Stacks[?StackName=='${stackName}'][].Outputs[?OutputKey=='${desiredOutput}'].OutputValue" --output text`;
 };
@@ -2850,7 +2857,8 @@ const getOutput = function (outputName) {
 async function main() {
   for (const desiredOutput of outputNames) {
     const result = await getOutput(desiredOutput);
-    core.setOutput(desiredOutput, result);
+    const finalOutputName = camelToSnakeCase(desiredOutput);
+    core.setOutput(finalOutputName, result);
   }
 }
 
