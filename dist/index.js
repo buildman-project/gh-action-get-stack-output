@@ -2829,7 +2829,6 @@ const core = __nccwpck_require__(186);
 const exec = (__nccwpck_require__(81).exec);
 
 const stackName = core.getInput("StackName");
-console.log("stackName:", stackName);
 const outputsString = core.getInput("Outputs");
 const outputNames = outputsString.split(",").map(function (str) {
   return str.trim();
@@ -2857,11 +2856,8 @@ const getOutput = function (outputName) {
 
 async function main() {
   for (const desiredOutput of outputNames) {
-    console.log("desiredOutput:", desiredOutput);
     const result = await getOutput(desiredOutput);
-    console.log("result:", result);
     const finalOutputName = camelToSnakeCase(desiredOutput);
-    console.log("finalOutputName:", finalOutputName);
     core.setOutput(finalOutputName, result);
   }
 }
