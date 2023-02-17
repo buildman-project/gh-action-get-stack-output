@@ -1,1 +1,1 @@
-# gh-action-get-stack-output
+# gh-action-generate-aws-params-file

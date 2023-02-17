@@ -1,0 +1,16 @@
+name: generate docker build script
+description: generates docker build script
+
+inputs:
+  Tag:
+    description: tag string for docker build
+  StackName:
+    required: true
+    description: name of the stack
+  Outpus:
+    required: true
+    description: separated comma string with the desired outputs' names
+
+runs:
+  using: node16
+  main: dist/index.js
