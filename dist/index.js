@@ -2837,9 +2837,12 @@ const getOutputScript = function (desiredOutput) {
 };
 
 for (const output of outputs) {
+  console.log('output:', output)
   const outputScript = getOutputScript(output);
+  console.log('outputScript:', outputScript)
 
   exec(outputScript, function (_, outputScriptResult, _) {
+    console.log('outputScriptResult:', outputScriptResult)
     core.setOutput(output, outputScriptResult);
   });
 }
