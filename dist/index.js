@@ -2839,7 +2839,7 @@ const camelToSnakeCase = (str) => {
   const tranformed = str
     .replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
     .toUpperCase();
-  return tranformed.startsWith("_") ? tranformed : tranformed.slice(1);
+  return tranformed.startsWith("_") ? tranformed.slice(1) : tranformed;
 };
 
 const getOutputScript = function (desiredOutput) {
