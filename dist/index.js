@@ -2843,19 +2843,20 @@ const getOutput = function (outputName) {
   console.log("outputScript:", outputScript);
   return new Promise(function (resolve) {
     exec(outputScript, function (_, outputScriptResult) {
-      console.log("outputScriptResult:", outputScriptResult);
       resolve(outputScriptResult);
     });
   });
 };
 
 async function main() {
-  core.setOutput("TestOutput", "TestValue");
   for (const desiredOutput of outputNames) {
-    console.log("output:", desiredOutput);
     const result = await getOutput(desiredOutput);
+    console.log("output:", desiredOutput);
+    console.log("result:", result);
     core.setOutput(desiredOutput, result);
   }
+
+  core.setOutput("TestOutput", "TestValue");
 }
 
 main();
