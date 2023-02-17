@@ -2861,6 +2861,7 @@ async function main() {
     const result = await getOutput(desiredOutput);
     console.log("result:", result);
     const finalOutputName = camelToSnakeCase(desiredOutput);
+    console.log("finalOutputName:", finalOutputName);
     core.setOutput(finalOutputName, result);
   }
 }
