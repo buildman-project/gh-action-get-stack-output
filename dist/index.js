@@ -2849,7 +2849,8 @@ const getOutput = function (outputName) {
   const outputScript = getOutputScript(outputName);
   return new Promise(function (resolve) {
     exec(outputScript, function (_, outputScriptResult) {
-      resolve(outputScriptResult);
+      const trimmedOutput = outputScriptResult.trim();
+      resolve(trimmedOutput);
     });
   });
 };
